@@ -1,3 +1,4 @@
+import Data.Menu
 
 class Cart {
     val orderList : MutableList<Menu> = mutableListOf()
@@ -16,14 +17,10 @@ class Cart {
     override fun toString(): String {
         var orderlist = "[ 장바구니 ]\n"
         when(orderList.size) {
-            0 -> return "장바구니가 비어있습니다"
+            0 -> return "- 장바구니가 비어있습니다 -"
             else -> {
                 for (i in 1..orderList.size) {
-                    var diff = ""
-                    for(i in 1..12 - orderList[i - 1].component2().length){
-                        diff += " "
-                    }
-                    orderlist += "$i. ${orderList[i - 1].component2()}${diff}|    ${orderList[i - 1].component4()} 원\n"
+                    orderlist += "$i. ${orderList[i - 1].component2()}\n가격 : ${orderList[i - 1].component4()} 원\n"
                 }
                 return orderlist
             }
