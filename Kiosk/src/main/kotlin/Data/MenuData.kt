@@ -1,7 +1,7 @@
 package Data
 
 
-class MenuData {
+class MenuData {               // 데이터클래스 Data에 add함수로 Menu 객체 집어넣기
     val menu = SetMenu()
     fun add() {
         menu.addMenu(Menu("스페셜 피자", "페스티벌", "불갈비, 포테이토, 쉬림프, 핫치킨 네가지 토핑의 축제", 25900))
