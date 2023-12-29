@@ -2,7 +2,7 @@ package com.teamsparta.courseregistration.domain.user.model
 
 import com.teamsparta.courseregistration.domain.course.model.Course
 import com.teamsparta.courseregistration.domain.courseapplication.model.CourseApplication
-import com.teamsparta.courseregistration.domain.user.model.UserRole.UserRole
+import com.teamsparta.courseregistration.domain.user.model.UserRole
 import jakarta.persistence.*
 
 

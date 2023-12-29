@@ -1,6 +1,6 @@
 package com.teamsparta.courseregistration.domain.course.model
 
-import com.teamsparta.courseregistration.domain.course.model.CourseStatus.CourseStatus
+import com.teamsparta.courseregistration.domain.course.model.CourseStatus
 import com.teamsparta.courseregistration.domain.courseapplication.model.CourseApplication
 import com.teamsparta.courseregistration.domain.lecture.model.Lecture
 import jakarta.persistence.*
