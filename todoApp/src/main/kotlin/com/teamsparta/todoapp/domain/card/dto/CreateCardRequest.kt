@@ -3,6 +3,7 @@ package com.teamsparta.todoapp.domain.card.dto
 import com.teamsparta.todoapp.domain.card.model.CardStatus
 
 data class CreateCardRequest(
+    val cardid : Long,
     val title: String,
     val body: String,
     val date: String,

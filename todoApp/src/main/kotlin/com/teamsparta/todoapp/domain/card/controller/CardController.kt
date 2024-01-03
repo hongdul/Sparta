@@ -30,25 +30,25 @@ class CardController(
             .body(cardService.getAllCardList())
     }
 
-    @GetMapping("/{cardId}")
-    fun getCard(@PathVariable cardId: Long): ResponseEntity<CardResponse> {
+    @GetMapping("/{cardid}")
+    fun getCard(@PathVariable cardid: Long): ResponseEntity<CardResponse> {
         return ResponseEntity
             .status(HttpStatus.OK)
-            .body(cardService.getCardById(cardId))
+            .body(cardService.getCardById(cardid))
     }
 
-    @PutMapping("/{cardId}")
+    @PutMapping("/{cardid}")
     fun updateCard(
-        @PathVariable cardId: Long,
+        @PathVariable cardid: Long,
         @RequestBody updateCardRequest: UpdateCardRequest
     ): ResponseEntity<CardResponse> {
         return ResponseEntity
             .status(HttpStatus.OK)
-            .body(cardService.updateCard(cardId, updateCardRequest))
+            .body(cardService.updateCard(cardid, updateCardRequest))
     }
 
-    @DeleteMapping("/{cardId}")
-    fun deleteCard(@PathVariable cardId: Long): ResponseEntity<Unit> {
+    @DeleteMapping("/{cardid}")
+    fun deleteCard(@PathVariable cardid: Long): ResponseEntity<Unit> {
         return ResponseEntity
             .status(HttpStatus.NO_CONTENT)
             .build()

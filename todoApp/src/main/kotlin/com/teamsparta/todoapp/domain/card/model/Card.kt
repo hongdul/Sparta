@@ -1,6 +1,8 @@
 package com.teamsparta.todoapp.domain.card.model
 
+import com.teamsparta.todoapp.domain.card.dto.CardResponse
 import jakarta.persistence.*
+
 
 @Entity
 @Table(name = "card")
@@ -25,7 +27,19 @@ class Card(
     var status: CardStatus,
 ) {
     @Id
+    @Column(name = "cardid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var cardId: Long? = null
+    var cardid: Long? = null
 
+}
+
+fun Card.toResponse(): CardResponse {
+    return CardResponse(
+        cardid = cardid!!,
+        title = title,
+        body = body,
+        date = date,
+        username = username,
+        status = status,
+    )
 }
