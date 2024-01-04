@@ -7,10 +7,17 @@ plugins {
     kotlin("plugin.spring") version "1.9.21"
     kotlin("plugin.jpa") version "1.6.10"
     kotlin("plugin.noarg") version "1.8.22"
+
+    id("org.jetbrains.kotlin.plugin.allopen") version "1.9.22"
+
 }
 //noArg {
 //    annotation("javax.persistence.Entity")
 //}
+allOpen {
+    annotation("com.my.Annotation")
+    // annotations("com.another.Annotation", "com.third.Annotation")
+}
 
 group = "com.teamsparta"
 version = "0.0.1-SNAPSHOT"

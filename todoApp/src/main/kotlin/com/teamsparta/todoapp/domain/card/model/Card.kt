@@ -1,6 +1,7 @@
 package com.teamsparta.todoapp.domain.card.model
 
 import com.teamsparta.todoapp.domain.card.dto.CardResponse
+import com.teamsparta.todoapp.domain.comment.model.Comment
 import jakarta.persistence.*
 
 
@@ -25,6 +26,13 @@ class Card(
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     var status: CardStatus,
+
+    @OneToMany(mappedBy = "card"
+        , fetch = FetchType.LAZY
+        , cascade = [CascadeType.REMOVE]
+        , orphanRemoval = true)
+    var comments: MutableList<Comment> = mutableListOf()
+
 ) {
     @Id
     @Column(name = "cardid")
@@ -41,5 +49,6 @@ fun Card.toResponse(): CardResponse {
         date = date,
         username = username,
         status = status,
+        comments = comments
     )
 }

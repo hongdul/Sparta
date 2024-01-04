@@ -1,4 +1,7 @@
 package com.teamsparta.todoapp.domain.comment.dto
 
-class CommentResponse {
-}
+data class CommentResponse(
+    val commenter: String,
+    val password: String,
+    val content: String,
+)

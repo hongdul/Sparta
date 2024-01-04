@@ -37,7 +37,7 @@ class CardServiceImpl(
                 body = request.body,
                 date = request.date,
                 username = request.username,
-                status = CardStatus.COMPLETED,
+                status = CardStatus.FALSE,
 //                cardId = request.cardId
             )
         ).toResponse()
