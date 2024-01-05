@@ -27,10 +27,10 @@ class Card(
     @Column(name = "status")
     var status: CardStatus,
 
-    @OneToMany(mappedBy = "card"
-        , fetch = FetchType.LAZY
+    @OneToMany(fetch = FetchType.LAZY
         , cascade = [CascadeType.REMOVE]
         , orphanRemoval = true)
+    @JoinColumn(name = "cardid")
     var comments: MutableList<Comment> = mutableListOf()
 
 ) {
@@ -39,6 +39,9 @@ class Card(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var cardid: Long? = null
 
+    fun addComment(comment: Comment) {
+        comments.add(comment)
+    }
 }
 
 fun Card.toResponse(): CardResponse {

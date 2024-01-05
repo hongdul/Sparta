@@ -7,6 +7,11 @@ import com.teamsparta.todoapp.domain.card.model.Card
 import com.teamsparta.todoapp.domain.card.model.CardStatus
 import com.teamsparta.todoapp.domain.card.model.toResponse
 import com.teamsparta.todoapp.domain.card.repository.CardRepository
+import com.teamsparta.todoapp.domain.comment.dto.CommentResponse
+import com.teamsparta.todoapp.domain.comment.dto.CreateCommentRequest
+import com.teamsparta.todoapp.domain.comment.model.Comment
+import com.teamsparta.todoapp.domain.comment.model.toResponse
+import com.teamsparta.todoapp.domain.comment.repository.CommentRepository
 import com.teamsparta.todoapp.domain.exception.ModelNotFoundException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
@@ -14,7 +19,8 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class CardServiceImpl(
-    private val cardRepository: CardRepository
+    private val cardRepository: CardRepository,
+    private val commentRepository: CommentRepository
 ): CardService{
 
     override fun getAllCardList(): List<CardResponse> {
@@ -62,4 +68,20 @@ class CardServiceImpl(
         val card = cardRepository.findByIdOrNull(cardid) ?: throw ModelNotFoundException("Card", cardid)
         cardRepository.delete(card)
     }
+
+    @Transactional
+    override fun addComment(cardid: Long, request: CreateCommentRequest): CommentResponse {
+        val card = cardRepository.findByIdOrNull(cardid) ?: throw ModelNotFoundException("Card", cardid)
+        val comment = Comment(
+            commenter = request.commenter,
+            password = request.password,
+            content = request.content
+        )
+
+        card.addComment(comment)
+        cardRepository.save(card)
+
+        return comment.toResponse()
+    }
+
 }

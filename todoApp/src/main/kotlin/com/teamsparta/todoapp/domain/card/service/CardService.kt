@@ -3,6 +3,8 @@ package com.teamsparta.todoapp.domain.card.service
 import com.teamsparta.todoapp.domain.card.dto.CardResponse
 import com.teamsparta.todoapp.domain.card.dto.CreateCardRequest
 import com.teamsparta.todoapp.domain.card.dto.UpdateCardRequest
+import com.teamsparta.todoapp.domain.comment.dto.CommentResponse
+import com.teamsparta.todoapp.domain.comment.dto.CreateCommentRequest
 
 interface CardService {
 
@@ -16,4 +18,5 @@ interface CardService {
 
     fun deleteCard(cardid: Long)
 
+    fun addComment(cardid: Long, createCommentRequest: CreateCommentRequest): CommentResponse
 }
